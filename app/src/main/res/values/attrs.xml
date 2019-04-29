@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IndexToolbar">
+        <attr name="ShowMenuBack" format="boolean" />
+        <attr name="ShowSearchText" format="boolean" />
+        <attr name="EditText" format="string" />
+        <attr name="ShowToolBarController" format="boolean"/>
+    </declare-styleable>
+</resources>

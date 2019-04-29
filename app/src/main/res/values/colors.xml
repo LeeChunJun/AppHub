@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/nav_bottom_dark</color>
+    <color name="colorPrimaryDark">@color/nav_bottom_dark</color>
+    <color name="colorAccent">@color/nav_bottom_dark</color>
+
+    <!--基础颜色-->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="yellow">#FDD000</color>
+    <color name="green">#AACF52</color>
+    <color name="orange">#ED6C00</color>
+    <color name="blue">#7ECEF4</color>
+    <color name="gray">#D7D7D7</color>
+    <color name="red">#FF0000</color>
+
+    <color name="search_letter">#A4A4A4</color>
+    <color name="search_bg">#F2F2F2</color>
+    <color name="search_icon">#62615F</color>
+
+    <color name="gray_letter">#999999</color>
+    <color name="gray_bg">#F3F3F3</color>
+    <color name="gray_line">#F3F3F3</color>
+
+    <color name="nav_bottom_dark">#FC5C22</color>
+    <color name="nav_bottom_light">#646560</color>
+
+
+</resources>

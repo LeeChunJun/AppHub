@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:minHeight="?attr/actionBarSize"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/toolbar_menu_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:paddingLeft="@dimen/margin_five"
+        android:paddingTop="@dimen/margin_five"
+        android:paddingBottom="@dimen/margin_five"
+        android:src="@drawable/ic_menu_back"
+        android:visibility="gone" />
+
+    <!--searchview界面-->
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_five"
+        android:layout_marginEnd="@dimen/margin_five"
+        android:layout_weight="1"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.licj.apphub.commons.views.SafeEditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_corner_bg"
+            android:drawableLeft="@drawable/ic_search"
+            android:drawablePadding="@dimen/margin_eight"
+            android:gravity="start"
+            android:hint="@string/toolbar_et_text"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:ems="200"
+            android:padding="@dimen/margin_eight"
+            android:textColor="@color/search_letter"
+            android:textSize="@dimen/size_level_three" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/margin_five"
+        android:paddingTop="@dimen/margin_five"
+        android:paddingBottom="@dimen/margin_five"
+        android:text="@string/toolbar_tv_search"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/size_level_one"
+        android:visibility="gone" />
+
+    <!--本地、历史、下载界面-->
+
+    <LinearLayout
+        android:id="@+id/ll_toolbar_controller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <ImageButton
+            android:id="@+id/toolbar_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:paddingRight="@dimen/margin_five"
+            android:paddingTop="@dimen/margin_five"
+            android:paddingBottom="@dimen/margin_five"
+            android:src="@drawable/ic_local" />
+
+        <ImageButton
+            android:id="@+id/toolbar_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:paddingRight="@dimen/margin_five"
+            android:paddingTop="@dimen/margin_five"
+            android:paddingBottom="@dimen/margin_five"
+            android:src="@drawable/ic_history" />
+
+        <ImageButton
+            android:id="@+id/toolbar_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:paddingRight="@dimen/margin_five"
+            android:paddingTop="@dimen/margin_five"
+            android:paddingBottom="@dimen/margin_five"
+            android:src="@drawable/ic_download" />
+
+    </LinearLayout>
+
+</LinearLayout>

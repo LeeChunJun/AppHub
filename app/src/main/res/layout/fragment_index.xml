@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg"
+    android:orientation="vertical"
+    tools:context=".index.IndexFragment">
+
+    <com.licj.apphub.commons.views.IndexToolBar
+        android:id="@+id/tb_index"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:EditText="主页推荐搜索"
+        app:ShowMenuBack="false"
+        app:ShowSearchText="false"
+        app:ShowToolBarController="true" />
+
+
+    <View
+        android:id="@+id/view_index_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_ten_"
+        android:layout_below="@id/tb_index"
+        android:background="@color/gray_line" />
+
+</RelativeLayout>
