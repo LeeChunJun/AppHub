@@ -1,1 +1,1 @@
-include ':app', ':coshare'
+include ':app', ':coshare', ':wehome'
