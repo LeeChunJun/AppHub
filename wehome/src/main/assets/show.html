@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>联邦高等</title>
-		<style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>联邦高等</title>
+    <style>
 			* {
 				padding: 0;
 				margin: 0;
 			}
+
 			.msg {
 				position: fixed;
 				z-index: 12345678910;
@@ -18,6 +19,7 @@
 				line-height: 30px;
 				text-align: center;
 			}
+
 			.zx {
 				position: fixed;
 				z-index: 12345678910;
@@ -29,23 +31,35 @@
 				margin-left: -1.5rem;
 				pointer-events: none
 			}
-		</style>
-		<link rel="stylesheet" href="js/photo-sphere-viewer.css">
-	</head>
-	<body>
-		<div id="content"></div>
-		<div class="msg"></div>
-		<img src="pic/zx.png" class="zx" />
-		<script src="js/three.min.js"></script>
-		<script src="js/photo-sphere-viewer.min.js"></script>
-		<script>
-			var div = document.getElementById('content');
+	</style>
+    <link rel="stylesheet" href="js/photo-sphere-viewer.css">
+</head>
+<body>
+<div id="photosphere"></div>
+<div class="msg" style="display: none;"></div>
+<img src="pic/zx.png" class="zx" style="display: none;"/>
+<script src="js/three.min.js"></script>
+<script src="js/photo-sphere-viewer.min.js"></script>
+<script>
+			var panos = [{
+					url: 'pic/1.jpg',
+					desc: '全景1'
+				},
+				{
+					url: 'pic/2.jpg',
+					desc: '全景2'
+				},
+				{
+					url: 'pic/3.jpg',
+					desc: '全景3'
+				}
+			];
 			var PSV = new PhotoSphereViewer({
-				panorama: 'pic/2.jpg',
-				container: div,
-				caption: document.title,
+				container: 'photosphere',
+				panorama: panos[0].url,
+				caption: panos[0].desc,
 				loading_img: 'pic/photosphere-logo.gif',
-				navbar: ['autorotate', 'caption', 'gyroscope', 'markers', 'caption', 'fullscreen'],
+				navbar: ['autorotate', 'zoom', 'gyroscope', 'markers', 'caption', 'fullscreen'],
 				default_fov: 100,
 				mousewheel: true,
 				move_speed: 3,
@@ -53,33 +67,116 @@
 				size: {
 					height: '100vh'
 				},
+				navbar_style: {
+					backgroundColor: 'rgba(58, 67, 77, 0.7)'
+				},
 				// 标记列表
-				markers: [
-					{
-						// image marker that opens the panel when clicked
-						id: 'image1',
-						longitude: 0.2,
-						latitude: -0.13770,
-						image: 'pic/location.png',
-						width: 32,
-						height: 32,
-						anchor: 'bottom center',
-						tooltip: '场景1',
-					},
-				]
+				markers: [{
+					// image marker that opens the panel when clicked
+					id: 'image2',
+					longitude: 2.32,
+					latitude: -0.25,
+					image: 'pic/location.png',
+					width: 60,
+					height: 60,
+					anchor: 'bottom center',
+					tooltip: panos[1].desc
+				},{
+					// image marker that opens the panel when clicked
+					id: 'image3',
+					longitude: 3.85,
+					latitude: -0.14,
+					image: 'pic/location.png',
+					width: 60,
+					height: 60,
+					anchor: 'bottom center',
+					tooltip: panos[2].desc
+				}, ]
 			});
 
 			// 选中全景中标记
 			PSV.on('select-marker', function(marker) {
 				switch (marker.id) {
-					case 'image1':
-						document.querySelector('.msg').innerHTML = 'circle';
+				    case 'image1':
 						// 判断当前全景是否有标记
 						if (PSV.hud.markers) {
 							PSV.hud.clearMarkers();
 						}
 						// 重新设置图片全景
-						PSV.setPanorama('pic/1.jpg', true, false);
+						PSV.setPanorama(panos[0].url, true, false);
+						// 为当前全景添加标记
+
+						PSV.addMarker({
+							// image marker that opens the panel when clicked
+                            id: 'image2',
+                            longitude: 2.32,
+                            latitude: -0.25,
+                            image: 'pic/location.png',
+                            width: 60,
+                            height: 60,
+                            anchor: 'bottom center',
+                            tooltip: panos[1].desc
+						});
+						PSV.addMarker({
+							// image marker that opens the panel when clicked
+                            id: 'image3',
+                            longitude: 3.85,
+                            latitude: -0.14,
+                            image: 'pic/location.png',
+                            width: 60,
+                            height: 60,
+                            anchor: 'bottom center',
+                            tooltip: panos[2].desc
+						});
+
+						// 重新渲染全景
+						PSV.render();
+						break;
+					case 'image2':
+						// 判断当前全景是否有标记
+						if (PSV.hud.markers) {
+							PSV.hud.clearMarkers();
+						}
+						// 重新设置图片全景
+						PSV.setPanorama(panos[1].url, true, false);
+						// 为当前全景添加标记
+
+						PSV.addMarker({
+							// image marker that opens the panel when clicked
+							id: 'image1',
+							longitude: 0.165,
+							latitude: -0.081,
+							image: 'pic/location.png',
+							width: 20,
+							height: 20,
+							anchor: 'bottom center',
+							tooltip: panos[0].desc
+						});
+
+						// 重新渲染全景
+						PSV.render();
+						break;
+					case 'image3':
+						// 判断当前全景是否有标记
+						if (PSV.hud.markers) {
+							PSV.hud.clearMarkers();
+						}
+						// 重新设置图片全景
+						PSV.setPanorama(panos[2].url, true, false);
+						// 为当前全景添加标记
+
+						PSV.addMarker({
+							// image marker that opens the panel when clicked
+							id: 'image1',
+							longitude: 0.758,
+							latitude: -0.135,
+							image: 'pic/location.png',
+							width: 60,
+							height: 60,
+							anchor: 'bottom center',
+							tooltip: panos[0].desc
+						});
+
 						// 重新渲染全景
 						PSV.render();
 						break;
@@ -93,5 +190,5 @@
 					8) + ')';
 			});
 		</script>
-	</body>
+</body>
 </html>
