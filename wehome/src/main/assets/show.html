@@ -33,15 +33,16 @@
 		<link rel="stylesheet" href="js/photo-sphere-viewer.css">
 	</head>
 	<body>
-		<div id="containter"></div>
+		<div id="content"></div>
 		<div class="msg"></div>
 		<img src="pic/zx.png" class="zx" />
 		<script src="js/three.min.js"></script>
 		<script src="js/photo-sphere-viewer.min.js"></script>
 		<script>
+			var div = document.getElementById('content');
 			var PSV = new PhotoSphereViewer({
 				panorama: 'pic/2.jpg',
-				container: 'containter',
+				container: div,
 				caption: document.title,
 				loading_img: 'pic/photosphere-logo.gif',
 				navbar: ['autorotate', 'caption', 'gyroscope', 'markers', 'caption', 'fullscreen'],

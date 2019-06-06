@@ -34,6 +34,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation 'com.google.vr:sdk-panowidget:1.180.0'
-    compile files('libs/tbs_sdk_thirdapp_v3.3.0.1045_43300.jar')
+    compile files('libs/tbs_sdk_thirdapp_v4.3.0.1072_43646.jar')
 
 }
