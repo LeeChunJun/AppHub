@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>联邦高等</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			.msg {
+				position: fixed;
+				z-index: 12345678910;
+				top: 0;
+				width: 100%;
+				color: #3EF231;
+				line-height: 30px;
+				text-align: center;
+			}
+			.zx {
+				position: fixed;
+				z-index: 12345678910;
+				width: 3rem;
+				height: 3rem;
+				left: 50%;
+				top: 50%;
+				margin-top: -1.5rem;
+				margin-left: -1.5rem;
+				pointer-events: none
+			}
+		</style>
+		<link rel="stylesheet" href="js/photo-sphere-viewer.css">
+	</head>
+	<body>
+		<div id="containter"></div>
+		<div class="msg"></div>
+		<img src="pic/zx.png" class="zx" />
+		<script src="js/three.min.js"></script>
+		<script src="js/photo-sphere-viewer.min.js"></script>
+		<script>
+			var PSV = new PhotoSphereViewer({
+				panorama: 'pic/2.jpg',
+				container: 'containter',
+				caption: document.title,
+				loading_img: 'pic/photosphere-logo.gif',
+				navbar: ['autorotate', 'caption', 'gyroscope', 'markers', 'caption', 'fullscreen'],
+				default_fov: 100,
+				mousewheel: true,
+				move_speed: 3,
+				gyroscope: true,
+				size: {
+					height: '100vh'
+				},
+				// 标记列表
+				markers: [
+					{
+						// image marker that opens the panel when clicked
+						id: 'image1',
+						longitude: 0.2,
+						latitude: -0.13770,
+						image: 'pic/location.png',
+						width: 32,
+						height: 32,
+						anchor: 'bottom center',
+						tooltip: '场景1',
+					},
+				]
+			});
+
+			// 选中全景中标记
+			PSV.on('select-marker', function(marker) {
+				switch (marker.id) {
+					case 'image1':
+						document.querySelector('.msg').innerHTML = 'circle';
+						// 判断当前全景是否有标记
+						if (PSV.hud.markers) {
+							PSV.hud.clearMarkers();
+						}
+						// 重新设置图片全景
+						PSV.setPanorama('pic/1.jpg', true, false);
+						// 重新渲染全景
+						PSV.render();
+						break;
+				}
+			});
+
+			// 全景图正在旋转时触发
+			PSV.on('position-updated', function(e) {
+				console.log('经度:' + e.longitude + ',纬度:' + e.latitude);
+				document.querySelector('.msg').innerHTML = '经纬度:(' + PSV.prop.longitude.toFixed(8) + ',' + PSV.prop.latitude.toFixed(
+					8) + ')';
+			});
+		</script>
+	</body>
+</html>
